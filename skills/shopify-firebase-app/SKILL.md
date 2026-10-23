@@ -60,7 +60,8 @@ Ask the user to save the client secret to `secret.txt` in the folder you will ru
 There is no terminal to answer the wizard's questions in, so pass every answer as a flag:
 
 ```bash
-SHOPIFY_API_SECRET="$(cat secret.txt)" npx @mksd0398/nitrogen@latest my-app \
+export SHOPIFY_API_SECRET="$(cat secret.txt)"  # security-allowlist: process environment loaded from a user-owned secret file
+npx @mksd0398/nitrogen@latest my-app \
   --api-key=CLIENT_ID \
   --project-id=PROJECT_ID \
   --firestore-region=us-central1 \
@@ -124,7 +125,8 @@ Run `cd functions && npm test` after every change, and before every deploy.
 The user gave the client ID, a new project id, their store and the location `europe-west1`, and saved the secret to `secret.txt`. The feature reads orders.
 
 ```bash
-SHOPIFY_API_SECRET="$(cat secret.txt)" npx @mksd0398/nitrogen@latest my-app \
+export SHOPIFY_API_SECRET="$(cat secret.txt)"  # security-allowlist: process environment loaded from a user-owned secret file
+npx @mksd0398/nitrogen@latest my-app \
   --api-key=CLIENT_ID \
   --project-id=PROJECT_ID \
   --create-project \
